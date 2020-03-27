@@ -1,5 +1,5 @@
 import React, { useState, useEffect }from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import { FiPower,FiTrash2 } from 'react-icons/fi';
 
 import api from '../../services/api';
@@ -8,6 +8,9 @@ import logoImg from '../../assets/logo.svg';
 import './styles.css';
 
 export default function Profile() {
+    
+    const history = useHistory();
+
     const [incidents, setIncidents] = useState([]);
     const ongId = localStorage.getItem('ongId');
     const ongName = localStorage.getItem('ongName');
@@ -36,6 +39,12 @@ export default function Profile() {
         }
     }
 
+    function handleLogout() {
+        localStorage.clear();
+        
+        history.push('/');
+    }
+
     return (
         <div className="profile-container">
             <header>
@@ -46,7 +55,7 @@ export default function Profile() {
                     className="button" 
                     to="/incidents/new">Cadastrar novo caso
                 </Link>
-                <button type="button">
+                <button onClick={handleLogout} type="button">
                     <FiPower size={18} color="#E02041" />
                 </button>
             </header>
