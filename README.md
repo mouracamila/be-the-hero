@@ -61,7 +61,7 @@ $ yarn dev
 ```
 ## Run App mobile
 
-Run in [Insomia](https://insomnia.rest/).
+Run in [Expo](https://expo.io/).
 
 
 ## How to contribute
